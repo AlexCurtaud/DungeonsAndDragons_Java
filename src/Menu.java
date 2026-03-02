@@ -14,7 +14,7 @@ public class Menu {
     // Game Start
     public void gameStart() {
         System.out.println("Welcome to Dungeon and Dragon" + ls + ls + "1.New Game" + ls + "2. Exit" + ls + "Type 1 or 2");
-        // Integer.parseInt + nextLine plutot que nextInt. nextInt ne consomme pas le \n créé quand on fait entrée. Il faut donc le consommer ou traduire un string en int, car nextLine consomme le \n
+        // Integer.parseInt + nextLine plutôt que nextInt. nextInt ne consomme pas le \n créé quand on fait entrée. Il faut donc le consommer ou traduire un string en int, car nextLine consomme le \n
         int userChoice = Integer.parseInt(clavier.nextLine());
         if(userChoice == 2) {
             System.exit(0);
