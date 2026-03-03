@@ -1,6 +1,7 @@
 public class Warrior extends Character{
     private final int health = 10;
     private final int physicalAttack = 5;
+    private String breed = "Warrior";
 
     // Warrior is extension of the Character Class. A Warrior is a type of Character.
     public Warrior(String characterName, int type) {
@@ -10,12 +11,20 @@ public class Warrior extends Character{
 
     // GETTER
     // Get Health
-    public int getHealth() {
+    @Override
+    public int getHealthStat() {
         return health;
     }
 
     // Get physical Attack
-    public int getPhysicalAttack() {
+    @Override
+    public int getAttackStat() {
         return physicalAttack;
+    }
+
+    // Get breed
+    @Override
+    public String getBreed() {
+        return breed;
     }
 }

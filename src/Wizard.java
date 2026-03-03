@@ -2,6 +2,7 @@ public class Wizard extends Character{
     private final int health = 6;
     private final int magicPower = 8;
     private final Gear gear = null;
+    private String breed = "Wizard";
 
     // Wizard is extension of the Character Class. A Wizard is a type of Character.
     public Wizard(String characterName, int type) {
@@ -11,12 +12,20 @@ public class Wizard extends Character{
 
     // GETTER
     // Get Health
-    public int getHealth() {
+    @Override
+    public int getHealthStat() {
         return health;
     }
 
-    // Get Magic Power
-    public int getMagicPower() {
+    // Get physical Attack
+    @Override
+    public int getAttackStat() {
         return magicPower;
+    }
+
+    // Get breed
+    @Override
+    public String getBreed() {
+        return breed;
     }
 }

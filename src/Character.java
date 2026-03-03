@@ -13,8 +13,30 @@ public class Character {
     public String getName() {
         return name;
     }
+
+    // Get the characters' type
+    public int getType() {
+        return type;
+    }
+
     // Get the character's position
     public int getCurrentPosition() {
         return currentPosition;
     }
+
+    // Get stats from the character
+    // Attack
+    public int getAttackStat() {
+        return 0;
+    }
+    // Defense
+    public int getHealthStat() {
+        return 0;
+    }
+    // Breed
+    public String getBreed() {
+        return "";
+    }
+
+
 }
