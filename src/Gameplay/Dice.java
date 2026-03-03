@@ -1,3 +1,5 @@
+package Gameplay;
+
 public class Dice {
     private final int faces = 6;
 

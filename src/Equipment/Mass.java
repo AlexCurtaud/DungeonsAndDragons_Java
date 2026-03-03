@@ -1,3 +1,5 @@
+package Equipment;
+
 public class Mass extends Gear {
     private int physicalAttack;
 

@@ -1,3 +1,7 @@
+package Characters;
+
+import Gameplay.Dice;
+
 public class Character {
     private final String name;
     private final int type;
@@ -38,5 +42,10 @@ public class Character {
         return "";
     }
 
+    // Method
+    // Character's move
+    public void move(Dice dice) {
+        currentPosition = dice.getScore();
+    }
 
 }

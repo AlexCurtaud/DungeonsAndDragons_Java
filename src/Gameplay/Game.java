@@ -1,3 +1,5 @@
+package Gameplay;
+
 public class Game {
     private Menu menu;
     private Board board;
@@ -13,8 +15,12 @@ public class Game {
     // Method that gather the method that run the game
     public void gameRunning() {
         menu.preGameMenu();
-
+        board.initBoard();
     }
+
+//    public void gameRound() {
+//        character
+//    }
 
 
 

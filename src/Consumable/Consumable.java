@@ -1,3 +1,5 @@
+package Consumable;
+
 public class Consumable {
     private String name;
     private String rarity;

@@ -1,4 +1,6 @@
-public class MagicSpell extends Gear{
+package Equipment;
+
+public class MagicSpell extends Gear {
     private int magicPower;
         public MagicSpell(String name, String rarity, int magicPower) {
             super(name, rarity);

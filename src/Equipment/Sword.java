@@ -1,4 +1,6 @@
-public class Sword extends Gear{
+package Equipment;
+
+public class Sword extends Gear {
     private int physicalAttack;
 
     public Sword(String name, String rarity, int physicalAttack) {

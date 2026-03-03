@@ -1,4 +1,6 @@
-public class Rule extends Game{
+package Gameplay;
+
+public class Rule extends Game {
     private int victory = 47;
     private int defeat = 0;
 

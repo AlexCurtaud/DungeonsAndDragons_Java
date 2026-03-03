@@ -1,3 +1,5 @@
+package Gameplay;
+
 public class Board {
     private final int caseNb = 47;
     private final int ennemyNb;

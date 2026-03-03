@@ -1,3 +1,5 @@
+package Equipment;
+
 public class Gear {
     private String name;
     private String rarity;

@@ -1,12 +1,13 @@
-public class Wizard extends Character{
+package Characters;
+
+public class Wizard extends Character {
     private final int health = 6;
     private final int magicPower = 8;
-    private final Gear gear = null;
-    private String breed = "Wizard";
+    private String breed = "Characters.Wizard";
 
-    // Wizard is extension of the Character Class. A Wizard is a type of Character.
+    // Characters.Wizard is extension of the Characters.Character Class. A Characters.Wizard is a type of Characters.Character.
     public Wizard(String characterName, int type) {
-        // super is calling to the Character class when creating a Wizard. When we create a wizard, it creates a Character.
+        // super is calling to the Characters.Character class when creating a Characters.Wizard. When we create a wizard, it creates a Characters.Character.
         super(characterName, type);
     }
 

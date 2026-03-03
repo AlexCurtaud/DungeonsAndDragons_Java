@@ -1,3 +1,7 @@
+package Gameplay;
+
+import Characters.Character;
+
 public class Display {
     private final String ls;
 
@@ -5,7 +9,7 @@ public class Display {
         ls = System.lineSeparator();
     }
 
-    // Display Method
+    // Gameplay.Display Method
     public void messageDisplay(String message) {
         System.out.println(message);
     }

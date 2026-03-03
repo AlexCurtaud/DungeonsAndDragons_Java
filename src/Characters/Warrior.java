@@ -1,11 +1,13 @@
-public class Warrior extends Character{
+package Characters;
+
+public class Warrior extends Character {
     private final int health = 10;
     private final int physicalAttack = 5;
-    private String breed = "Warrior";
+    private String breed = "Characters.Warrior";
 
-    // Warrior is extension of the Character Class. A Warrior is a type of Character.
+    // Characters.Warrior is extension of the Characters.Character Class. A Characters.Warrior is a type of Characters.Character.
     public Warrior(String characterName, int type) {
-        // super is calling to the Character class when creating a Warrior. When we create a Warrior, it creates a Character.
+        // super is calling to the Characters.Character class when creating a Characters.Warrior. When we create a Characters.Warrior, it creates a Characters.Character.
         super(characterName, type);
     }
 

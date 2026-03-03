@@ -1,4 +1,6 @@
-public class Potion extends Consumable{
+package Consumable;
+
+public class Potion extends Consumable {
     private int heal;
 
     public Potion(String name, String rarity, int heal) {
