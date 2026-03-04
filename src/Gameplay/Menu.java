@@ -1,7 +1,6 @@
 package Gameplay;
 
 import Characters.Character;
-import Characters.CharacterFactory;
 
 import java.util.Scanner;
 
@@ -29,9 +28,8 @@ public class Menu {
             System.out.println("[MENU]" + ls +
                     "1. New Game" + ls +
                     "2. Create/Update Character" + ls +
-                    "3. Show CCharacter's info" + ls +
-                    "4. Exit" + ls +
-                    "Type 1, 2, 3 or 4");
+                    "3. Show Character's info" + ls +
+                    "4. Exit");
             // Integer.parseInt + nextLine plutôt que nextInt. nextInt ne consomme pas le \n créé quand on fait entrée. Il faut donc le consommer ou traduire un string en int, car nextLine consomme le \n
             userChoice = Integer.parseInt(clavier.nextLine());
             if (userChoice == 1) {
@@ -45,7 +43,7 @@ public class Menu {
                 player = game.playerCreation();
             } else if (userChoice == 3) {
                 if(player != null) {
-                    display.statusDisplay(player);
+                    display.statsDisplay(player);
                 }
                 else {
                     System.out.println("|||Please create a character|||");
@@ -56,6 +54,14 @@ public class Menu {
             }
         }
 
+    // Menu end game
+    public int endGameMenu() {
+        System.out.println("The Game has finished !" + ls +
+                "1. Start New Game" + ls +
+                "2. Main Menu");
+        int userChoice = Integer.parseInt(clavier.nextLine());
+        return userChoice;
+    }
 
     // Retrieve User Information
     // Retrieve the name of the character
@@ -67,7 +73,7 @@ public class Menu {
 
     // Retrieve the character choice of the user
     public int retrieveCharacterChoice() {
-        System.out.println("Are you a :" + ls + "1. Characters.Wizard" + ls + "Stats: Magic Power: 8 / Health: 6" + ls + "2. Characters.Warrior" + ls + "Stats: Physical Attack 5 / Health 10" + ls + "Type 1 or 2");
+        System.out.println("Are you a :" + ls + "1. Wizard" + ls + "Stats: Magic Power 8 / Health: 6" + ls + "2. Warrior" + ls + "Stats: Physical Attack 5 / Health 10" + ls + "Type 1 or 2");
         int characterChoice = Integer.parseInt(clavier.nextLine());
         return characterChoice;
     }

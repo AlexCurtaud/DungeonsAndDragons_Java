@@ -7,7 +7,6 @@ public class Board {
 
     public Board(int cellNb) {
         this.cellNb = cellNb;
-
     }
 
     // GETTER

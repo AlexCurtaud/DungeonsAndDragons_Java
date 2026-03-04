@@ -25,6 +25,9 @@ public class Character {
 
     // Get the character's position
     public int getCurrentPosition() {
+        if (currentPosition > 47) {
+            currentPosition = 47;
+        }
         return currentPosition;
     }
 
@@ -38,8 +41,14 @@ public class Character {
         return 0;
     }
     // Breed
-    public String getBreed() {
+    public String getPlayerClass() {
         return "";
+    }
+
+    // SETTER
+    // Set Current Position
+    public void setCurrentPosition(int i){
+        currentPosition = i;
     }
 
     // Method

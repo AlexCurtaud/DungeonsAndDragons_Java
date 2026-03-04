@@ -31,11 +31,23 @@ public class Game {
     }
 
     public void startGame() {
+        Boolean exit = false;
         board.initBoard();
-        while(player.getCurrentPosition() < 47) {
-            player.move(dice);
-            System.out.println(player.getCurrentPosition() + "/" + board.getCellNb);
+        while(!exit) {
+            while (player.getCurrentPosition() < 47) {
+                player.move(dice);
+                System.out.println(player.getCurrentPosition() + "/" + board.getCellNb());
+            }
+            if(menu.endGameMenu() == 2) {
+                exit = true;
+            }
+            player.setCurrentPosition(1);
         }
+    }
+
+    public void endGame() {
+        menu.endGameMenu();
+
     }
 
 //    public void gameRound() {

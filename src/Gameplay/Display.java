@@ -9,15 +9,11 @@ public class Display {
         ls = System.lineSeparator();
     }
 
-    // Gameplay.Display Method
-    public void messageDisplay(String message) {
-        System.out.println(message);
-    }
-
-    public void statusDisplay(Character character) {
+    //Display Method
+    public void statsDisplay(Character player) {
         System.out.println(
-                character.getName() + " : " + character.getBreed() + ls +
-                "Health: " + character.getHealthStat() + ls +
-                "Attack: " + character.getAttackStat());
+                player.getName() + " : " + player.getPlayerClass() + ls +
+                "Health: " + player.getHealthStat() + ls +
+                "Attack: " + player.getAttackStat());
     }
 }
