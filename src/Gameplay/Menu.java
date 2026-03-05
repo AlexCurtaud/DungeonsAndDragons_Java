@@ -1,7 +1,6 @@
 package Gameplay;
 
-import Characters.Character;
-
+import characters.Character;
 import java.util.Scanner;
 
 public class Menu {
@@ -9,11 +8,13 @@ public class Menu {
     private final Scanner clavier;
     private final String ls;
     private Display display;
+    private Game game;
 
-    public Menu() {
-        clavier = new Scanner(System.in);
-        ls = System.lineSeparator();
-        display = new Display();
+    public Menu(Game game) {
+        this.clavier = new Scanner(System.in);
+        this.ls = System.lineSeparator();
+        this.display = new Display();
+        this.game = game;
     }
 
     // Method
@@ -21,7 +22,6 @@ public class Menu {
     public void preGameMenu() {
         System.out.println("||WELCOME TO DUNGEONS AND DRAGONS||" + ls + " ---------- ");
         int userChoice;
-        Game game = new Game();
         Character player = null;
         boolean end = false;
         while (!end) {
@@ -32,32 +32,30 @@ public class Menu {
                     "4. Exit");
             // Integer.parseInt + nextLine plutôt que nextInt. nextInt ne consomme pas le \n créé quand on fait entrée. Il faut donc le consommer ou traduire un string en int, car nextLine consomme le \n
             userChoice = Integer.parseInt(clavier.nextLine());
-            if (userChoice == 1) {
-                if(player == null) {
-                    System.out.println(" |||Please create a character|||");
-                } else {
+            switch (userChoice) {
+                case 1:
                     game.startGame();
-                }
-            }
-            else if (userChoice == 2) {
-                player = game.playerCreation();
-            } else if (userChoice == 3) {
-                if(player != null) {
-                    display.statsDisplay(player);
-                }
-                else {
-                    System.out.println("|||Please create a character|||");
-                }
-            } else if (userChoice == 4) {
-                end = true;
-            }
+                    break;
+                case 2:
+                    player = game.playerCreation();
+                    break;
+                case 3:
+                    if (player != null) {
+                        display.statsDisplay(player);
+                    } else {
+                        System.out.println("|||Please create a character|||");
+                    }
+                    break;
+                case 4:
+                    end = true;
+                    break;
             }
         }
+    }
 
     // Menu end game
     public int endGameMenu() {
-        System.out.println("The Game has finished !" + ls +
-                "1. Start New Game" + ls +
+        System.out.println("1. Start New Game" + ls +
                 "2. Main Menu");
         int userChoice = Integer.parseInt(clavier.nextLine());
         return userChoice;
@@ -72,13 +70,14 @@ public class Menu {
     }
 
     // Retrieve the character choice of the user
-    public int retrieveCharacterChoice() {
+    public String retrieveCharacterChoice() {
+        String[] classType = {"Wizard", "Warrior"};
+        String type;
         System.out.println("Are you a :" + ls + "1. Wizard" + ls + "Stats: Magic Power 8 / Health: 6" + ls + "2. Warrior" + ls + "Stats: Physical Attack 5 / Health 10" + ls + "Type 1 or 2");
         int characterChoice = Integer.parseInt(clavier.nextLine());
-        return characterChoice;
+        type = classType[characterChoice-1];
+        return type;
     }
-
-
 
 
 }
