@@ -4,21 +4,32 @@ import characters.Character;
 import java.util.Scanner;
 
 public class Menu {
-    // The class Scanner has many useful tools like the System.in that we need here.
     private final Scanner clavier;
     private final String ls;
-    private Display display;
     private Game game;
 
+    /**
+     * Menu Constructor initiates a Menu that uses three attributes
+     * Scanner with System.in to retrieve user input
+     * System.lineSeparator to simplify the print in the console
+     * Game to use its method within the menu
+     * @param game
+     */
     public Menu(Game game) {
         this.clavier = new Scanner(System.in);
         this.ls = System.lineSeparator();
-        this.display = new Display();
         this.game = game;
     }
 
     // Method
-    // Gameplay.Game Start
+
+    /**
+     * The main menu to:
+     * - Start a game
+     * - Create/Modify a Character
+     * - Display Character info
+     * - Exit the game
+     */
     public void preGameMenu() {
         System.out.println("||WELCOME TO DUNGEONS AND DRAGONS||" + ls + " ---------- ");
         int userChoice;
@@ -41,7 +52,7 @@ public class Menu {
                     break;
                 case 3:
                     if (player != null) {
-                        display.statsDisplay(player);
+                        System.out.println(player);
                     } else {
                         System.out.println("|||Please create a character|||");
                     }
@@ -53,7 +64,12 @@ public class Menu {
         }
     }
 
-    // Menu end game
+    /**
+     * A menu at the end of a game to chose between:
+     * - Playing again
+     * - Back to main menu
+     * @return userChoice
+     */
     public int endGameMenu() {
         System.out.println("1. Start New Game" + ls +
                 "2. Main Menu");
@@ -62,13 +78,21 @@ public class Menu {
     }
 
     // Retrieve User Information
-    // Retrieve the name of the character
+
+    /**
+     * Retrieve the name of the character out of a user input
+     * @return characterName
+     */
     public String retrieveName() {
         System.out.println("Welcome new adventurer! How should we call you ?");
         String characterName = clavier.nextLine();
         return characterName;
     }
 
+    /**
+     * Retrieve the character choice out of a user input
+     * @return type
+     */
     // Retrieve the character choice of the user
     public String retrieveCharacterChoice() {
         String[] classType = {"Wizard", "Warrior"};
