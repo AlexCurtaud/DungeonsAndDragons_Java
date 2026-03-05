@@ -34,7 +34,7 @@ public class Wizard extends Character {
 
     /**
      * Gather the Wizard information
-     * @return it to be printed
+     * @return Object
      */
     @Override
     public String toString() {

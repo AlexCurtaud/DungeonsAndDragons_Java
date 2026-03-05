@@ -34,7 +34,7 @@ public class Warrior extends Character {
 
     /**
      * Gather the Warrior information
-     * @return it to be printed
+     * @return Object
      */
     @Override
     public String toString() {

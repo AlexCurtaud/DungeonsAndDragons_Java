@@ -66,6 +66,12 @@ public abstract class Character {
         currentPosition = i;
     }
 
+    //toString
+    /**
+     * Abstract Method in order to display sub Class object.
+     */
+    public abstract String toString();
+
     // Method
     /**
      * Movement method made for the character to move from as many cell as the Dice getScore method
