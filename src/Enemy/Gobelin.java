@@ -1,8 +1,9 @@
-package Ennemy;
+package Enemy;
 
-public class Gobelin extends Ennemy {
+public class Gobelin extends Enemy {
     private int physicalAttack = 2;
     private int health = 9;
+
 
     public Gobelin(String name, int vitality, String type) {
         super(name, vitality, type);
@@ -16,7 +17,7 @@ public class Gobelin extends Ennemy {
      */
     @Override
     public int getAttack() {
-        return magicPower;
+        return physicalAttack;
     }
 
     /**
@@ -29,6 +30,6 @@ public class Gobelin extends Ennemy {
     }
 
     public String toString() {
-        return return "Ennemy : \n" + name + " " + type + "\n" + "Health [" + health + "] + PhysicalAttack [" + physicalAttack + "]";
+        return name + "\nType: " + type + "\nHealth [" + health + "] + PhysicalAttack [" + physicalAttack + "]";
     }
 }

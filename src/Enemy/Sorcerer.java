@@ -1,6 +1,6 @@
-package Ennemy;
+package Enemy;
 
-public class Sorcerer extends Ennemy {
+public class Sorcerer extends Enemy {
     private int magicPower = 2;
     private int health = 9;
 
@@ -29,6 +29,6 @@ public class Sorcerer extends Ennemy {
     }
 
     public String toString() {
-        return return "Ennemy : \n" + name + " " + type + "\n" + "Health [" + health + "] + PhysicalAttack [" + magicPower + "]";
+        return name + "\nType: " + type + "\nHealth [" + health + "] + PhysicalAttack [" + magicPower + "]";
     }
 }

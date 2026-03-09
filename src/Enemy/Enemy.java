@@ -1,6 +1,9 @@
-package Ennemy;
+package Enemy;
 
-public abstract class Ennemy {
+/**
+ * Class Enemy
+ */
+public abstract class Enemy {
     protected String name;
     protected int vitality;
     protected String type;
@@ -13,7 +16,8 @@ public abstract class Ennemy {
      * @param vitality
      * @param type
      */
-    public Ennemy(String name, int vitality, String type) {
+    public Enemy(String name, int vitality, String type) {
+
         this.name = name;
         this.vitality = vitality;
         this.type = type;
