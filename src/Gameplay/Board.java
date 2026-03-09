@@ -6,12 +6,15 @@ import OffensiveEquipment.Weapon;
 
 import java.util.ArrayList;
 
+/**
+ * Every boardgames has a Board. This class represent the board
+ */
 public class Board {
     private int cellNb;
     protected ArrayList<Cell> cells;
 
     /**
-     * Board Constructor, for now it is made out of a number of cells
+     * Board Constructor, for now it is made out of a number of cells and contain an ArrayList of Cells
      * @param cellNb
      */
     public Board(int cellNb) {
@@ -23,7 +26,7 @@ public class Board {
 
     /**
      * Get the cell number of the board
-     * @return
+     * @return the Board cell number
      */
     public int getCellNb() {
         return cellNb;
@@ -31,9 +34,9 @@ public class Board {
 
     // Method
     /**
-     * Board Initialisation method. It creates a board of Cell as long as its number of cell.
-     * It creates a Cell Object has many times as the cellNb attribute of the board.
-     * @return board of Cell
+     * Board Initialisation method. It creates an ArrayList of Cell as long as its number of cell.
+     * Each cell is made manually for now.
+     * @return an ArrayList of Cell
      */
     public ArrayList<Cell> initBoard() {
         cells.add(0, new Cell(1, null, null, null));

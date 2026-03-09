@@ -10,7 +10,7 @@ public class Dice {
     // Method
     /**
      * This Method gets a random number from the dice range
-     * @return score
+     * @return a random within the dice range
      */
     public int getScore() {
         int range = (faces - 1) + 1;

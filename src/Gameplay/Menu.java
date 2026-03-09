@@ -5,6 +5,9 @@ import java.util.Scanner;
 import Enum.PlayerClass;
 import Exception.PlayerTypeInvalidException;
 
+/**
+ * A game always display a menu for the user to interact and get message from the game. It's the role of this class.
+ */
 public class Menu {
     private final Scanner clavier;
     private final String ls;

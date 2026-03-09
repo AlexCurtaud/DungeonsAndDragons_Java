@@ -5,6 +5,9 @@ import Enemy.Enemy;
 import OffensiveEquipment.OffensiveEquipment;
 import Characters.Character;
 
+/**
+ * A Board is made out of Cells, that is the use of the Cell class.
+ */
 public class Cell {
     private int id;
     private Character player = null;
@@ -88,6 +91,11 @@ public class Cell {
 //    }
 
     //SETTER
+    /**
+     * The setPlayer method is made to add the player to the Cell when he is currently within the Cell.
+     * It set the value to null when the player leave the cell.
+     * @param player - An instance of Player
+     */
     public void setPlayer(Character player) {
         if (player.getCurrentPosition() == this.id) {
             this.player = player;
@@ -96,6 +104,11 @@ public class Cell {
     }
 
     //toString
+    /**
+     * toString method here returns a description of what is on the cell.
+     * It could be empty or containing equipment, an enemy etc...
+     * @return the description of its content.
+     */
     @Override
     public String toString() {
         String sentence = "Empty Cell";

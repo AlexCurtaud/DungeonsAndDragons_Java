@@ -8,6 +8,9 @@ import Exception.PlayerTypeInvalidException;
 
 import java.util.ArrayList;
 
+/**
+ * The Game class represent the link between each class. Its goal is to initiate the game using the different classes and methods
+ */
 public class Game {
     private Menu menu;
     private Board board;
@@ -34,7 +37,8 @@ public class Game {
 
     /**
      * Method that create the player. It retrieves info from the user and use the Wizard or WARRIOR Constructor to create it.
-     * Print a message with the type join.
+     * Two exceptions can be caught and returned as the PlayerTypeInvalidException
+     * Print a message that say player's name join a type name guild.
      * @return player
      */
     public Character playerCreation() throws PlayerTypeInvalidException {
