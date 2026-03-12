@@ -6,6 +6,7 @@ import Gameplay.Dice;
 import OffensiveEquipment.OffensiveEquipment;
 
 public abstract class Character {
+    protected int id;
     protected String name;
     protected String type;
     private int currentPosition = 1;
@@ -24,6 +25,7 @@ public abstract class Character {
      * @param type
      * @param vitality
      */
+
     public Character(String name, String type, int vitality) {
         this.name = name;
         this.type = type;
@@ -31,6 +33,22 @@ public abstract class Character {
     }
 
     // GETTER
+
+    /**
+     * Get the Player's id
+     * @return id
+     */
+    public int getId() {
+        return id;
+    }
+    /**
+     * Set the player's id
+     * @param id (from the database result);
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
     /**
      * Get Character's name
       * @return name

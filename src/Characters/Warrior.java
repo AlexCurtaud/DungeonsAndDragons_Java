@@ -53,6 +53,6 @@ public class Warrior extends Character {
      */
     @Override
     public String toString() {
-        return "Player : \n" + name + " " + type + "\n" + "Health [" + health + "] + PhysicalAttack [" + physicalAttack + "]";
+        return getId() + ". " + name + " - " + type + "\n" + "Health [" + health + "] + PhysicalAttack [" + physicalAttack + "]\n";
     }
 }

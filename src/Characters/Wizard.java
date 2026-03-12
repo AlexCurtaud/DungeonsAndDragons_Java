@@ -47,6 +47,6 @@ public class Wizard extends Character {
      */
     @Override
     public String toString() {
-        return "Player : \n" + name + " " + type + "\n" + "Health [" + health + "] MagicPower [" + magicPower + "]";
+        return getId() + ". " + name + " - " + type + "\n" + "Health [" + health + "] MagicPower [" + magicPower + "]\n";
     }
 }
