@@ -1,6 +1,9 @@
 package Gameplay;
 
 import Characters.Character;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import Enum.PlayerClass;
 import Exception.PlayerTypeInvalidException;
@@ -38,16 +41,23 @@ public class Menu {
     public void preGameMenu() {
         System.out.println("--WELCOME TO DUNGEONS AND DRAGONS--" + ls + " ---------- ");
         int userChoice;
-        Character player = null;
+        Character player = game.getCurrentPlayer();
         boolean end = false;
         while (!end) {
             System.out.println("[MENU]" + ls +
                     "1. New Game" + ls +
-                    "2. Create/Update Character" + ls +
-                    "3. Show Character's info" + ls +
-                    "4. Exit");
+                    "2. Create Character" + ls +
+                    "3. Manage Character" + ls +
+                    "4. Show Character's info" + ls +
+                    "5. Exit");
             // Integer.parseInt + nextLine plutôt que nextInt. nextInt ne consomme pas le \n créé quand on fait entrée. Il faut donc le consommer ou traduire un string en int, car nextLine consomme le \n
-            userChoice = Integer.parseInt(clavier.nextLine());
+            try {
+                userChoice = Integer.parseInt(clavier.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please use a valid option");
+                continue;
+            }
+
             switch (userChoice) {
                 case 1:
                     game.startGame();
@@ -60,15 +70,20 @@ public class Menu {
                     }
                     break;
                 case 3:
+                    playerSelectorMenu();
+                    player = game.getCurrentPlayer();
+                    break;
+                case 4:
                     if (player != null) {
                         System.out.println(player);
                     } else {
                         System.out.println("|||Please create a character|||");
                     }
                     break;
-                case 4:
+                case 5:
                     end = true;
                     break;
+                default: System.out.println("Please, select a valid option");
             }
         }
     }
@@ -115,5 +130,47 @@ public class Menu {
         return type;
     }
 
+    /**
+     *
+     */
+    public void playerSelectorMenu() {
+        System.out.println("Select a player by typing it's id");
+        for(Character c : game.getPlayers().values()) {
+            System.out.println(c);
+        }
+        System.out.println("0. Main menu");
+        boolean exit = false;
+        int playerChoice = Integer.parseInt(clavier.nextLine());
+        while(!exit) {
+            if(playerChoice == 0) {
+                exit = true;
+            } else {
+                manageCharacterMenu(playerChoice);
+                exit = true;
+            }
+        }
+    }
 
+    public void manageCharacterMenu(int id) {
+        Character c = game.getPlayer(id);
+        System.out.println((c) +
+                "\n1. Select" +
+                "\n2. Update" +
+                "\n3. Delete" +
+                "\n0. Main menu");
+        int playerChoice = Integer.parseInt(clavier.nextLine());
+
+        switch(playerChoice) {
+            case 1:
+                game.setCurrentPlayer(c);
+                break;
+            case 2:
+                game.updateCharacter(c);
+            case 3:
+                game.deleteCharacter(c);
+            case 0:
+        }
+
+    }
 }
+

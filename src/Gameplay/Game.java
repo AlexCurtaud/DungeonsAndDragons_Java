@@ -3,10 +3,13 @@ package Gameplay;
 import Characters.Character;
 import Characters.Warrior;
 import Characters.Wizard;
+import Dao.CharacterDao;
+import DaoImplement.CharacterDaoImplement;
 import Enum.PlayerClass;
 import Exception.PlayerTypeInvalidException;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.*;
 
 /**
  * The Game class represent the link between each class. Its goal is to initiate the game using the different classes and methods
@@ -15,7 +18,9 @@ public class Game {
     private Menu menu;
     private Board board;
     private Dice dice;
+    private Map<Integer, Character> players;
     private Character player = null;
+    private CharacterDao cdi;
 
     /**
      * Game Class & Constructor. It takes a Character player that is null for now. Important to be null for the Menu
@@ -25,15 +30,53 @@ public class Game {
         this.board = new Board(4);
         this.dice = new Dice();
         this.menu = new Menu(this);
+        this.cdi = new CharacterDaoImplement();
+        this.players = new HashMap<>();
     }
+
+    /**
+     * Get the Game Characters. It means all the characters available.
+     * @return ArrayList of player
+     */
+    public Map<Integer, Character> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers() throws PlayerTypeInvalidException {
+        try {
+            for(Character c : cdi.findAll()) {
+                players.put(c.getId(), c);
+            }
+        } catch(SQLException e) {
+            throw new PlayerTypeInvalidException(e.getMessage());
+        }
+    }
+
+
+    public Character getCurrentPlayer() {
+        return player;
+    }
+
+    public void setCurrentPlayer(Character player) {
+        this.player = player;
+    }
+
+    public Character getPlayer(int id) {
+        return players.get(id);
+    }
+
     // Method
     /**
      * The gameRunning Method contains all the necessary method to make the game playable.
      * For now the preGameMenu where everything is monitored.
      */
     public void gameRunning() {
-        menu.preGameMenu();
-    }
+        try {
+            this.setPlayers();
+        } catch (PlayerTypeInvalidException e) {}
+            menu.preGameMenu();
+        }
+
 
     /**
      * Method that create the player. It retrieves info from the user and use the Wizard or WARRIOR Constructor to create it.
@@ -44,6 +87,7 @@ public class Game {
     public Character playerCreation() throws PlayerTypeInvalidException {
         String playerName = menu.retrieveName();
         String retrieveClass= null;
+        int id;
         try {
             retrieveClass = menu.retrieveCharacterChoice();
         } catch (NumberFormatException e) {
@@ -60,8 +104,34 @@ public class Game {
         } else {
             throw new PlayerTypeInvalidException();
         }
+        try {
+            id = cdi.create(player);
+        } catch (SQLException e) {
+            throw new PlayerTypeInvalidException();
+        }
+        player.setId(id);
+        players.put(id, player);
         return player;
     }
+
+    public void updateCharacter(Character player) {
+        player.setName(menu.retrieveName());
+        try {
+            cdi.update(player);
+        } catch (SQLException e) {
+        }
+        System.out.println("Player updated");
+    }
+
+    public void deleteCharacter(Character player) {
+        try {
+            cdi.delete(player.getId());
+        } catch (SQLException e) {
+        }
+        players.remove(player.getId());
+        System.out.println("Player deleted");
+    }
+
     /**
      * The method startGame is a void method that start the gameplay. Runs has long as the player doesn't reach the end of the board.
      * It needs an existing character to run.
